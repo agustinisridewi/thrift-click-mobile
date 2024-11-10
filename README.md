@@ -168,3 +168,72 @@ Di proyek ini, tidak ada variabel yang dipengaruhi oleh setState() karena semua 
     flutter run
    ```
 </details>
+
+<details>
+<summary>Tugas 8</summary>
+
+## Apa kegunaan const di Flutter? Jelaskan apa keuntungan ketika menggunakan const pada kode Flutter. Kapan sebaiknya kita menggunakan const, dan kapan sebaiknya tidak digunakan?
+Keyword `const` digunakan di Flutter untuk mendeklarasikan konstanta yang nilainya tetap sepanjang waktu. Manfaat utama const adalah meningkatkan efisiensi performa karena objek yang dideklarasikan dengan const dibuat hanya sekali dan dapat digunakan kembali. 
+
+`const` sebaiknya digunakan ketika kita yakin bahwa nilai atau widget tersebut tidak akan berubah selama aplikasi berjalan (statis). Namun, pengunaan  `const` sebaiknya dihindari jika nilai tersebut dinamis atau bergantung pada input pengguna, karena dapat menyebabkan error ketika kode dijalankan.
+
+## Jelaskan dan bandingkan penggunaan Column dan Row pada Flutter. Berikan contoh implementasi dari masing-masing layout widget ini!
+Di Flutter, **Column** dan **Row** adalah widget tata letak yang digunakan untuk menyusun widget secara vertikal dan horizontal.
+  
+ - **Column**: menyusun widget anak secara vertikal. Cocok untuk menampilkan konten bertingkat seperti formulir atau daftar.
+ 
+ - **Row**: menyusun widget anak secara horizontal. Cocok untuk membuat toolbar, menu, atau menampilkan elemen dalam satu baris.
+
+
+## Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
+Dalam tugas kali ini, saya menggunakan elemen sebagai berikut:
+- `TextField` untuk input teks
+- `Checkbox` untuk pilihan opsi
+-  `Radio` untuk memilih salah satu dari beberapa opsi
+
+Elemen input yang tidak saya gunakan, antara lain:
+- `DropdownButton` untuk daftar pilihan.
+- `Switch`, `Slider`, `DatePicker`, dan `TimePicker` yang bisa digunakan sesuai kebutuhan aplikasi. Namun, tidak semua elemen harus digunakan, dan pemilihan elemen bergantung pada jenis data yang ingin dikumpulkan dari pengguna.
+
+
+## Bagaimana cara kamu mengatur tema (theme) dalam aplikasi Flutter agar aplikasi yang dibuat konsisten? Apakah kamu mengimplementasikan tema pada aplikasi yang kamu buat?
+Flutter menyediakan `ThemeData` dalam widget `MaterialApp` untuk mengatur tema aplikasi. Anda dapat mendefinisikan warna, ukuran teks, serta gaya lainnya secara konsisten di seluruh aplikasi.
+
+```dart
+  MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colors.teal,
+      ).copyWith(secondary: const Color(0xFFBF360C)),
+      useMaterial3: true,
+    ),
+    home: MyHomePage(),
+  );
+
+```
+
+## Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
+Untuk menangani navigasi di aplikasi multi-halaman, Flutter menggunakan widget Navigator untuk transisi antar halaman. Dengan Navigator.push, Anda dapat membuka halaman baru, dan Navigator.pop digunakan untuk kembali ke halaman sebelumnya.
+
+```dart
+  onTap: () {
+      Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context)=> const ProductEntryFormPage())
+    );
+  },
+```
+
+Untuk aplikasi dengan banyak bagian, penggunaan Drawer sangat membantu dalam mengelola navigasi antar halaman.
+```dart
+class LeftDrawer extends StatelessWidget {
+  const LeftDrawer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      ...
+    )
+```
+</details>
