@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:thrift_click/menu.dart';
+import 'package:thrift_click/screens/menu.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch(
-          primarySwatch: Colors.pink,
+          primarySwatch: Colors.teal,
         ).copyWith(secondary: const Color(0xFFBF360C)),
         useMaterial3: true,
       ),
