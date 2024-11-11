@@ -187,11 +187,11 @@ Di Flutter, **Column** dan **Row** adalah widget tata letak yang digunakan untuk
 
 ## Sebutkan apa saja elemen input yang kamu gunakan pada halaman form yang kamu buat pada tugas kali ini. Apakah terdapat elemen input Flutter lain yang tidak kamu gunakan pada tugas ini? Jelaskan!
 Dalam tugas kali ini, saya menggunakan elemen sebagai berikut:
-- `TextField` untuk input teks
-- `Checkbox` untuk pilihan opsi
--  `Radio` untuk memilih salah satu dari beberapa opsi
+- `TextField` untuk menerima input teks nama, deskripsi, dan harga produk
 
 Elemen input yang tidak saya gunakan, antara lain:
+- `Checkbox` untuk pilihan opsi
+-  `Radio` untuk memilih salah satu dari beberapa opsi
 - `DropdownButton` untuk daftar pilihan.
 - `Switch`, `Slider`, `DatePicker`, dan `TimePicker` yang bisa digunakan sesuai kebutuhan aplikasi. Namun, tidak semua elemen harus digunakan, dan pemilihan elemen bergantung pada jenis data yang ingin dikumpulkan dari pengguna.
 
@@ -214,7 +214,7 @@ Flutter menyediakan `ThemeData` dalam widget `MaterialApp` untuk mengatur tema a
 ```
 
 ## Bagaimana cara kamu menangani navigasi dalam aplikasi dengan banyak halaman pada Flutter?
-Untuk menangani navigasi di aplikasi multi-halaman, Flutter menggunakan widget Navigator untuk transisi antar halaman. Dengan Navigator.push, Anda dapat membuka halaman baru, dan Navigator.pop digunakan untuk kembali ke halaman sebelumnya.
+Untuk menangani navigasi di aplikasi multi-halaman(multi-screens), Flutter menggunakan widget Navigator untuk transisi antar halaman. Dengan Navigator.push, Anda dapat membuka halaman baru, dan Navigator.pop digunakan untuk kembali ke halaman sebelumnya.
 
 ```dart
   onTap: () {
