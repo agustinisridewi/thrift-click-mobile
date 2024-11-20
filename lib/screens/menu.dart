@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:thrift_click/widgets/left_drawer.dart';
-import 'package:thrift_click/screens/productentry_form.dart';
 import 'package:thrift_click/widgets/product_card.dart';
 
 

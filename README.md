@@ -237,3 +237,65 @@ class LeftDrawer extends StatelessWidget {
     )
 ```
 </details>
+
+<details>
+<summary>Tugas 9</summary>
+
+## Jelaskan mengapa kita perlu membuat model untuk melakukan pengambilan ataupun pengiriman data JSON? Apakah akan terjadi error jika kita tidak membuat model terlebih dahulu?
+
+## Jelaskan fungsi dari library http yang sudah kamu implementasikan pada tugas ini
+
+## Jelaskan fungsi dari CookieRequest dan jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
+CookieRequest adalah bagian dari pustaka pbp_django_auth yang digunakan untuk menangani autentikasi berbasis cookie antara aplikasi Flutter dan backend Django. CookieRequest menyimpan informasi autentikasi (seperti session cookie) yang diterima dari server saat pengguna login. Semua request HTTP yang dikirim menggunakan CookieRequest otomatis menyertakan cookie autentikasi di header. Ini memastikan server mengenali pengguna tanpa perlu memasukkan kredensial berulang kali. Ga perlu login berulang", CookieRequest juga memastikan session cookie dihapus, baik di aplikasi maupun di server saat user logout.
+
+Karena autentikasi berbasis session adalah fitur yang berlaku di seluruh aplikasi, instance CookieRequest harus tersedia untuk setiap widget atau layar yang memerlukan autentikasi. Ketika pengguna berpindah dari halaman produk ke halaman detail, cookie autentikasi perlu digunakan untuk memvalidasi pengguna tanpa meminta login ulang. Semua komponen aplikasi yang memerlukan komunikasi dengan server membutuhkan instance yang sama. Ini memastikan cookie session dan state tetap konsisten. Dengan menggunakan satu instance CookieRequest yang dibagikan pastinya akan mengurangi overhead karena tidak perlu membuat dan mengelola banyak instance untuk setiap komponen.
+
+Dalam tugas ini kita membagikan instance CookieRequest menggunakan provider sehingga pengelolaan state menjadi lebih efisien. Komponen-komponen yang memerlukan akses hanya perlu memanggil context.watch<CookieRequest>().
+
+## Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
+
+## Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
+
+## Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
+1. Buat Django App:
+  - Buat app authentication dan tambahkan ke INSTALLED_APPS.
+2. Install & Konfigurasi CORS:
+  - Jalankan pip install django-cors-headers.
+  - Tambahkan corsheaders ke INSTALLED_APPS dan MIDDLEWARE.
+  - Tambahkan pengaturan:
+2. Buat Login View:
+  - Tambahkan fungsi login pada authentication/views.py.
+  - Tambahkan routing di authentication/urls.py
+4. Tambahkan Path di URLs Utama:
+  - Di urls.py utama, tambahkan
+5. Install Dependencies
+  flutter pub add provider
+  flutter pub add pbp_django_auth
+6. Modifikasi main.dart:
+- Tambahkan Provider untuk membagikan CookieRequest ke seluruh aplikasi.
+7. Buat login.dart:
+- Tambahkan form login dengan autentikasi menggunakan endpoint /auth/login/.
+8. Buat Register View:
+- Tambahkan fungsi register di authentication/views.py.
+- Tambahkan routing di authentication/urls.py
+9. Buat register.dart di Flutter:
+- Buat form register untuk mengirim data ke /auth/register/.
+10. Tambahkan Dependency HTTP:
+- Jalankan flutter pub add http.
+- Tambahkan izin akses Internet di AndroidManifest.xml.
+11. Setup Fetch Data:
+- Buat model dengan Quicktype dan tambahkan di folder models/.
+- Buat file list_moodentry.dart untuk menampilkan data dari endpoint /json/.
+12. Buat View untuk Create Mood:
+- Tambahkan fungsi create_mood_flutter di main/views.py.
+- Tambahkan routing di main/urls.py
+13. Modifikasi Form Flutter:
+- Gunakan CookieRequest untuk mengirim data dari form ke endpoint /create-flutter/.
+14. Buat Logout View di Django:
+- Tambahkan fungsi logout di authentication/views.py.
+- Tambahkan routing di authentication/urls.py:
+15. Integrasi Logout pada Flutter:
+- Tambahkan logika logout ke widget yang sesuai menggunakan endpoint /auth/logout/.
+16. Test Semua Fungsi:
+Coba login, register, fetch data, kirim data, dan logout melalui Flutter.
+</details>
